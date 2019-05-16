@@ -17,9 +17,9 @@ int main()
 
 			vector<int> output;
 
-			for (itr1 = nums.begin(), indeces1 = 0;itr1 < nums.end();itr1++, indeces1++)
+			for (itr1 = nums.begin(), indeces1 = 0; itr1 < nums.end(); itr1++, indeces1++)
 			{
-				for (itr2 = itr1 + 1, indeces2 = indeces1 + 1;itr2 < nums.end();itr2++, indeces2++)
+				for (itr2 = itr1 + 1, indeces2 = indeces1 + 1; itr2 < nums.end(); itr2++, indeces2++)
 				{
 					int sum = *itr1 + *itr2;
 
@@ -45,14 +45,14 @@ int main()
 	int target;
 
 	int temp;
-	for (int i = 0;i < 10;i++)
+	for (int i = 0; i < 10; i++)
 	{
 		cin >> temp;
 
 		input.push_back(temp);
 	}
 	cin >> target;
-	
+
 	vector<int> output;
 	Solution solution;
 	output = solution.twoSum(input, target);
@@ -60,7 +60,7 @@ int main()
 	if (!output.empty())
 	{
 		vector<int>::iterator outputItr;
-		for (outputItr = output.begin();outputItr < output.end();outputItr++)
+		for (outputItr = output.begin(); outputItr < output.end(); outputItr++)
 		{
 			cout << *outputItr << endl;
 		}
