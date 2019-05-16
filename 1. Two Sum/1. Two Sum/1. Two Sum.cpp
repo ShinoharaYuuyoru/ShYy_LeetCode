@@ -15,9 +15,11 @@ int main()
 			int indeces1;
 			int indeces2;
 
+			bool finishFlag;
+
 			vector<int> output;
 
-			for (itr1 = nums.begin(), indeces1 = 0; itr1 < nums.end(); itr1++, indeces1++)
+			for (itr1 = nums.begin(), indeces1 = 0, finishFlag = false; itr1 < nums.end(); itr1++, indeces1++)
 			{
 				for (itr2 = itr1 + 1, indeces2 = indeces1 + 1; itr2 < nums.end(); itr2++, indeces2++)
 				{
@@ -28,12 +30,23 @@ int main()
 						output.push_back(indeces1);
 						output.push_back(indeces2);
 
+						finishFlag = true;
+
 						break;
 					}
 					else
 					{
 						continue;
 					}
+				}
+
+				if (finishFlag == true)
+				{
+					break;
+				}
+				else
+				{
+					continue;
 				}
 			}
 
