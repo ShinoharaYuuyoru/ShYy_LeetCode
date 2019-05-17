@@ -140,3 +140,90 @@
 //
 //	return 0;
 //}
+
+//#include <iostream>
+//#include <string>
+//
+//using namespace std;
+//
+//int main()
+//{
+//	string str("12345678");
+//	char ch[] = "abcdefgh";
+//	string a;	// Empty string.
+//	string str_1(str);	// Copy str.
+//	string str_2(str, 2, 5);	// Copy 5 characters from the 2nd element.
+//	string str_3(ch, 5);	// Copy first 5 characters from ch.
+//	string str_4(5, 'X');	// Set a string with 5 X. "XXXXX".
+//	string str_5(str.begin(), str.end());	// Copy str. The same as str_1.
+//	string str_6(ch, 2, 5);	// Copy 5 characters from the 2nd element.
+//
+//	cout << str << endl;
+//	cout << a << endl;
+//	cout << str_1 << endl;
+//	cout << str_2 << endl;
+//	cout << str_3 << endl;
+//	cout << str_4 << endl;
+//	cout << str_5 << endl;
+//	cout << str_6 << endl;
+//
+//	return 0;
+//}
+
+//#include <iostream>
+//#include <string>
+//
+//using namespace std;
+//
+//int main()
+//{
+//	string str("12345678");
+//	int size = str.size();
+//	int length = str.length();
+//	int maxSize = str.max_size();
+//	int capacity = str.capacity();
+//	cout << str << endl;
+//	cout << size << endl;
+//	cout << length << endl;
+//	cout << maxSize << endl;
+//	cout << capacity << endl;
+//
+//	string str_custom = str;
+//	// About the .reserve():
+//	// 1. If the para is smaller than the original capacity, this will make no effect.
+//	// 2. If the para is bigger than the original capacity, the capacity will be expanded to a [(n*16 - 1), n=1, 2, 3, ...] capacity, like 15, 31, 47.
+//	str_custom.reserve(20);
+//	// About the .resize():
+//	// 1. If the para is smaller than the original capacity, the original string will be cut to the size.
+//	// 2. If the para is bigger than the original capacity, the empty spaces of the new string should be filled with the character given in the 2nd para.
+//	// e.g. str_custom.resize(20, 'a');
+//	str_custom.resize(5);
+//	size = str_custom.size();
+//	length = str_custom.length();
+//	maxSize = str_custom.max_size();
+//	capacity = str_custom.capacity();
+//	cout << str_custom << endl;
+//	cout << size << endl;
+//	cout << length << endl;
+//	cout << maxSize << endl;
+//	cout << capacity << endl;
+//
+//	return 0;
+//}
+
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+int main()
+{
+	string str1("123456");
+	string str2("abcdefghijklmn");
+	string str;
+	str.assign(str1);
+	cout << str << endl;
+	str.assign(str1, 3, 3);
+	cout << str << endl;
+
+}
