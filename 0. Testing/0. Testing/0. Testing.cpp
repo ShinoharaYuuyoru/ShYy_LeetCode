@@ -303,60 +303,124 @@
 //	return 0;
 //}
 
+//#include <iostream>
+//
+//using namespace std;
+//
+//class Shape
+//{
+//protected:
+//	int width;
+//	int height;
+//
+//public:
+//	void setWidth(int w)
+//	{
+//		width = w;
+//	}
+//
+//	void setHeight(int h)
+//	{
+//		height = h;
+//	}
+//};
+//
+//class PaintCost
+//{
+//public:
+//	int getCost(int area)
+//	{
+//		return area * 70;
+//	}
+//};
+//
+//class Rectangle : public Shape, public PaintCost
+//{
+//public:
+//	int getArea()
+//	{
+//		return (width * height);
+//	}
+//};
+//
+//int main()
+//{
+//	Rectangle Rect;
+//	int area;
+//	int cost;
+//
+//	Rect.setWidth(5);
+//	Rect.setHeight(7);
+//
+//	area = Rect.getArea();
+//	cost = Rect.getCost(area);
+//
+//	cout << "Total area: " << area << endl;
+//	cout << "Total coast: " << cost << endl;
+//
+//	return 0;
+//}
+
 #include <iostream>
 
 using namespace std;
 
-class Shape
+class Box
 {
-protected:
-	int width;
-	int height;
+private:
+	double length;
+	double breadth;
+	double height;
 
 public:
-	void setWidth(int w)
+	void setLength(double l)
 	{
-		width = w;
+		length = l;
 	}
-
-	void setHeight(int h)
+	void setBreadth(double b)
+	{
+		breadth = b;
+	}
+	void setHeight(double h)
 	{
 		height = h;
 	}
-};
 
-class PaintCost
-{
-public:
-	int getCost(int area)
+	double getVolume()
 	{
-		return area * 70;
+		return length * breadth* height;
 	}
-};
 
-class Rectangle : public Shape, public PaintCost
-{
-public:
-	int getArea()
+	Box operator+(const Box& b)
 	{
-		return (width * height);
+		Box box;
+		box.length = this->length + b.length;
+		box.breadth = this->breadth + b.breadth;
+		box.height = this->height + b.height;
+
+		return box;
 	}
 };
 
 int main()
 {
-	Rectangle Rect;
-	int area;
-	int cost;
+	Box box1;
+	Box box2;
+	Box box3;
+	double box3Volume = 0.0;
 
-	Rect.setWidth(5);
-	Rect.setHeight(7);
+	box1.setLength(5.0);
+	box1.setBreadth(6.0);
+	box1.setHeight(7.0);
 
-	area = Rect.getArea();
-	cost = Rect.getCost(area);
+	box2.setLength(8.0);
+	box2.setBreadth(9.0);
+	box2.setHeight(10.0);
 
-	cout << "Total area: " << area << endl;
-	cout << "Total coast: " << cost << endl;
+	box3 = box1 + box2;
+
+	box3Volume = box3.getVolume();
+	cout << "Box 3 volume is: " << box3Volume << endl;
 
 	return 0;
 }
