@@ -211,94 +211,152 @@
 //	return 0;
 //}
 
+//#include <iostream>
+//#include <string>
+//
+//using namespace std;
+//
+//int main()
+//{
+//	string str1("123456");
+//	string str2("abcdefghijklmn");
+//	string str;
+//	str.assign(str1);
+//	cout << str << endl;
+//	str.assign(str1, 3, 3);
+//	cout << str << endl;
+//	str.assign(str1, 2, str1.npos);
+//	cout << str << endl;
+//	str.assign(5, 'X');
+//	cout << str << endl;
+//
+//	string::iterator itB;
+//	string::iterator itE;
+//	itB = str1.begin();
+//	itE = str1.end();
+//	str.assign(itB, (--itE));
+//	cout << str << endl;
+//	
+//	str = str1;
+//	cout << str << endl;
+//	str.erase(3);
+//	cout << str << endl;
+//	str.erase(str.begin(), str.end());
+//	cout << ":" << str << ":" << endl;
+//	
+//	str.swap(str2);
+//	cout << str << endl;
+//
+//	string A("ello");
+//	string B("H");
+//	B.insert(1, A);
+//	cout << B << endl;
+//
+//	A = "ello";
+//	B = "H";
+//	B.insert(1, "yanchy", 3);
+//	cout << "Insert: " << B << endl;
+//
+//	A = "ello";
+//	B = "H";
+//	B.insert(1, A, 2, 2);
+//	cout << "Insert: " << B << endl;
+//
+//	A = "ello";
+//	B = "H";
+//	B.insert(1, 5, 'I');
+//	cout << "Insert: " << B << endl;
+//	
+//	A = "ello";
+//	B = "H";
+//	string::iterator it = B.begin() + 1;
+//	const string::iterator itF = A.begin();
+//	const string::iterator itG = A.end();
+//	B.insert(it, itF, itG);
+//	cout << "Insert: " << B << endl;
+//
+//	A = "ello";
+//	B = "H";
+//	B.append(A);
+//	cout << "Append: " << B << endl;
+//
+//	A = "ello";
+//	B = "H";
+//	B.append("12345", 2);
+//	cout << "Append: " << B << endl;
+//
+//	A = "ello";
+//	B = "H";
+//	B.append("12345", 2, 3);
+//	cout << "Append: " << B << endl;
+//
+//	A = "ello";
+//	B = "H";
+//	B.append(10, 'a');
+//	cout << "Append: " << B << endl;
+//
+//	A = "ello";
+//	B = "H";
+//	B.append(A.begin(), A.end());
+//	cout << "Append: " << B << endl;
+//
+//	return 0;
+//}
+
 #include <iostream>
-#include <string>
 
 using namespace std;
 
+class Shape
+{
+protected:
+	int width;
+	int height;
+
+public:
+	void setWidth(int w)
+	{
+		width = w;
+	}
+
+	void setHeight(int h)
+	{
+		height = h;
+	}
+};
+
+class PaintCost
+{
+public:
+	int getCost(int area)
+	{
+		return area * 70;
+	}
+};
+
+class Rectangle : public Shape, public PaintCost
+{
+public:
+	int getArea()
+	{
+		return (width * height);
+	}
+};
+
 int main()
 {
-	string str1("123456");
-	string str2("abcdefghijklmn");
-	string str;
-	str.assign(str1);
-	cout << str << endl;
-	str.assign(str1, 3, 3);
-	cout << str << endl;
-	str.assign(str1, 2, str1.npos);
-	cout << str << endl;
-	str.assign(5, 'X');
-	cout << str << endl;
+	Rectangle Rect;
+	int area;
+	int cost;
 
-	string::iterator itB;
-	string::iterator itE;
-	itB = str1.begin();
-	itE = str1.end();
-	str.assign(itB, (--itE));
-	cout << str << endl;
-	
-	str = str1;
-	cout << str << endl;
-	str.erase(3);
-	cout << str << endl;
-	str.erase(str.begin(), str.end());
-	cout << ":" << str << ":" << endl;
-	
-	str.swap(str2);
-	cout << str << endl;
+	Rect.setWidth(5);
+	Rect.setHeight(7);
 
-	string A("ello");
-	string B("H");
-	B.insert(1, A);
-	cout << B << endl;
+	area = Rect.getArea();
+	cost = Rect.getCost(area);
 
-	A = "ello";
-	B = "H";
-	B.insert(1, "yanchy", 3);
-	cout << "Insert: " << B << endl;
-
-	A = "ello";
-	B = "H";
-	B.insert(1, A, 2, 2);
-	cout << "Insert: " << B << endl;
-
-	A = "ello";
-	B = "H";
-	B.insert(1, 5, 'I');
-	cout << "Insert: " << B << endl;
-	
-	A = "ello";
-	B = "H";
-	string::iterator it = B.begin() + 1;
-	const string::iterator itF = A.begin();
-	const string::iterator itG = A.end();
-	B.insert(it, itF, itG);
-	cout << "Insert: " << B << endl;
-
-	A = "ello";
-	B = "H";
-	B.append(A);
-	cout << "Append: " << B << endl;
-
-	A = "ello";
-	B = "H";
-	B.append("12345", 2);
-	cout << "Append: " << B << endl;
-
-	A = "ello";
-	B = "H";
-	B.append("12345", 2, 3);
-	cout << "Append: " << B << endl;
-
-	A = "ello";
-	B = "H";
-	B.append(10, 'a');
-	cout << "Append: " << B << endl;
-
-	A = "ello";
-	B = "H";
-	B.append(A.begin(), A.end());
-	cout << "Append: " << B << endl;
+	cout << "Total area: " << area << endl;
+	cout << "Total coast: " << cost << endl;
 
 	return 0;
 }
