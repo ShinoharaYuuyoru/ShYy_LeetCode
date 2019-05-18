@@ -425,79 +425,123 @@
 //	return 0;
 //}
 
+//#include <iostream>
+//
+//using namespace std;
+//
+//class Shape
+//{
+//protected:
+//	double width;
+//	double height;
+//
+//public:
+//	Shape(double w, double h)
+//	{
+//		width = w;
+//		height = h;
+//	}
+//	~Shape()
+//	{
+//
+//	}
+//
+//	virtual double area()
+//	{
+//		cout << "Parent class area: " << endl;
+//
+//		return 0;
+//	}
+//	// virtual double area() = 0;
+//};
+//
+//class Rectangle :public Shape
+//{
+//public:
+//	Rectangle(double w, double h) :Shape(w, h)
+//	{
+//
+//	}
+//
+//	double area()
+//	{
+//		cout << "Rectangle class area: " << endl;
+//
+//		return (width * height);
+//	}
+//};
+//
+//class Triangle :public Shape
+//{
+//public:
+//	Triangle(double w, double h) :Shape(w, h)
+//	{
+//
+//	}
+//
+//	double area()
+//	{
+//		cout << "Triangle class area: " << endl;
+//
+//		return (width * height / 2);
+//	}
+//};
+//
+//int main()
+//{
+//	Shape* shape;
+//	Rectangle rec(10, 7);
+//	Triangle tri(20, 8);
+//
+//	shape = &rec;
+//	cout << shape->area() << endl;
+//
+//	shape = &tri;
+//	cout << shape->area() << endl;
+//
+//	return 0;
+//}
+
+//#include <iostream>
+//#include <vector>
+//
+//using namespace std;
+//
+//int main()
+//{
+//	vector<string> v(3, "hi");
+//
+//	vector<string>::iterator it;
+//	for (it = v.begin(); it < v.end(); it++)
+//	{
+//		cout << *it << endl;
+//	}
+//
+//	return 0;
+//}
+
 #include <iostream>
+#include <vector>
+#include <queue>
 
 using namespace std;
 
-class Shape
-{
-protected:
-	double width;
-	double height;
-
-public:
-	Shape(double w, double h)
-	{
-		width = w;
-		height = h;
-	}
-	~Shape()
-	{
-
-	}
-
-	virtual double area()
-	{
-		cout << "Parent class area: " << endl;
-
-		return 0;
-	}
-	// virtual double area() = 0;
-};
-
-class Rectangle :public Shape
-{
-public:
-	Rectangle(double w, double h) :Shape(w, h)
-	{
-
-	}
-
-	double area()
-	{
-		cout << "Rectangle class area: " << endl;
-
-		return (width * height);
-	}
-};
-
-class Triangle :public Shape
-{
-public:
-	Triangle(double w, double h) :Shape(w, h)
-	{
-
-	}
-
-	double area()
-	{
-		cout << "Triangle class area: " << endl;
-
-		return (width * height / 2);
-	}
-};
-
 int main()
 {
-	Shape* shape;
-	Rectangle rec(10, 7);
-	Triangle tri(20, 8);
+	//priority_queue<pair<int, int>> coll;	// Big heap.
+	priority_queue<pair<int, int>, vector<pair<int, int>>, greater<pair<int, int>>> coll;	// Small heap.
+	pair<int, int> a(3, 4);
+	pair<int, int> b(3, 5);
+	pair<int, int> c(4, 3);
+	coll.push(c);
+	coll.push(a);
+	coll.push(b);
 
-	shape = &rec;
-	cout << shape->area() << endl;
-
-	shape = &tri;
-	cout << shape->area() << endl;
+	while (coll.empty() != 1)
+	{
+		cout << coll.top().first << "\t" << coll.top().second << endl;
+		coll.pop();
+	}
 
 	return 0;
 }
