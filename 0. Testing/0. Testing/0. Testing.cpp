@@ -452,6 +452,7 @@ public:
 
 		return 0;
 	}
+	// virtual double area() = 0;
 };
 
 class Rectangle :public Shape
