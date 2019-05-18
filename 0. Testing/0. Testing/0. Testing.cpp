@@ -361,66 +361,142 @@
 //	return 0;
 //}
 
+//#include <iostream>
+//
+//using namespace std;
+//
+//class Box
+//{
+//private:
+//	double length;
+//	double breadth;
+//	double height;
+//
+//public:
+//	void setLength(double l)
+//	{
+//		length = l;
+//	}
+//	void setBreadth(double b)
+//	{
+//		breadth = b;
+//	}
+//	void setHeight(double h)
+//	{
+//		height = h;
+//	}
+//
+//	double getVolume()
+//	{
+//		return length * breadth* height;
+//	}
+//
+//	Box operator+(const Box& b)
+//	{
+//		Box box;
+//		box.length = this->length + b.length;
+//		box.breadth = this->breadth + b.breadth;
+//		box.height = this->height + b.height;
+//
+//		return box;
+//	}
+//};
+//
+//int main()
+//{
+//	Box box1;
+//	Box box2;
+//	Box box3;
+//	double box3Volume = 0.0;
+//
+//	box1.setLength(5.0);
+//	box1.setBreadth(6.0);
+//	box1.setHeight(7.0);
+//
+//	box2.setLength(8.0);
+//	box2.setBreadth(9.0);
+//	box2.setHeight(10.0);
+//
+//	box3 = box1 + box2;
+//
+//	box3Volume = box3.getVolume();
+//	cout << "Box 3 volume is: " << box3Volume << endl;
+//
+//	return 0;
+//}
+
 #include <iostream>
 
 using namespace std;
 
-class Box
+class Shape
 {
-private:
-	double length;
-	double breadth;
+protected:
+	double width;
 	double height;
 
 public:
-	void setLength(double l)
+	Shape(double w, double h)
 	{
-		length = l;
-	}
-	void setBreadth(double b)
-	{
-		breadth = b;
-	}
-	void setHeight(double h)
-	{
+		width = w;
 		height = h;
 	}
-
-	double getVolume()
+	~Shape()
 	{
-		return length * breadth* height;
+
 	}
 
-	Box operator+(const Box& b)
+	virtual double area()
 	{
-		Box box;
-		box.length = this->length + b.length;
-		box.breadth = this->breadth + b.breadth;
-		box.height = this->height + b.height;
+		cout << "Parent class area: " << endl;
 
-		return box;
+		return 0;
+	}
+};
+
+class Rectangle :public Shape
+{
+public:
+	Rectangle(double w, double h) :Shape(w, h)
+	{
+
+	}
+
+	double area()
+	{
+		cout << "Rectangle class area: " << endl;
+
+		return (width * height);
+	}
+};
+
+class Triangle :public Shape
+{
+public:
+	Triangle(double w, double h) :Shape(w, h)
+	{
+
+	}
+
+	double area()
+	{
+		cout << "Triangle class area: " << endl;
+
+		return (width * height / 2);
 	}
 };
 
 int main()
 {
-	Box box1;
-	Box box2;
-	Box box3;
-	double box3Volume = 0.0;
+	Shape* shape;
+	Rectangle rec(10, 7);
+	Triangle tri(20, 8);
 
-	box1.setLength(5.0);
-	box1.setBreadth(6.0);
-	box1.setHeight(7.0);
+	shape = &rec;
+	cout << shape->area() << endl;
 
-	box2.setLength(8.0);
-	box2.setBreadth(9.0);
-	box2.setHeight(10.0);
-
-	box3 = box1 + box2;
-
-	box3Volume = box3.getVolume();
-	cout << "Box 3 volume is: " << box3Volume << endl;
+	shape = &tri;
+	cout << shape->area() << endl;
 
 	return 0;
 }
