@@ -520,28 +520,28 @@
 //	return 0;
 //}
 
-#include <iostream>
-#include <vector>
-#include <queue>
-
-using namespace std;
-
-int main()
-{
-	//priority_queue<pair<int, int>> coll;	// Big heap.
-	priority_queue<pair<int, int>, vector<pair<int, int>>, greater<pair<int, int>>> coll;	// Small heap.
-	pair<int, int> a(3, 4);
-	pair<int, int> b(3, 5);
-	pair<int, int> c(4, 3);
-	coll.push(c);
-	coll.push(a);
-	coll.push(b);
-
-	while (coll.empty() != 1)
-	{
-		cout << coll.top().first << "\t" << coll.top().second << endl;
-		coll.pop();
-	}
-
-	return 0;
-}
+//#include <iostream>
+//#include <vector>
+//#include <queue>
+//
+//using namespace std;
+//
+//int main()
+//{
+//	//priority_queue<pair<int, int>> coll;	// Big heap.
+//	priority_queue<pair<int, int>, vector<pair<int, int>>, greater<pair<int, int>>> coll;	// Small heap.
+//	pair<int, int> a(3, 4);
+//	pair<int, int> b(3, 5);
+//	pair<int, int> c(4, 3);
+//	coll.push(c);
+//	coll.push(a);
+//	coll.push(b);
+//
+//	while (coll.empty() != 1)
+//	{
+//		cout << coll.top().first << "\t" << coll.top().second << endl;
+//		coll.pop();
+//	}
+//
+//	return 0;
+//}
