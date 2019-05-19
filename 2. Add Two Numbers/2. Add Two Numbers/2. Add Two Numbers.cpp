@@ -112,7 +112,7 @@ public:
 		}
 
 		ListNode* deleteANSHead = lANS;
-		free(deleteANSHead);
+		delete deleteANSHead;
 
 		return realANSHead;
 	}
