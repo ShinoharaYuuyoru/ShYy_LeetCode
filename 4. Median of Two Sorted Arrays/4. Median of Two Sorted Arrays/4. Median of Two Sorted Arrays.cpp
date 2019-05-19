@@ -12,12 +12,15 @@ public:
 		double ANS;
 		vector<int> combine;
 
-		// Method 1: Insert.
-		combine.insert(combine.end(), nums1.begin(), nums1.end());
-		combine.insert(combine.end(), nums2.begin(), nums2.end());
+		//// Method 1: Insert.
+		//combine.insert(combine.end(), nums1.begin(), nums1.end());
+		//combine.insert(combine.end(), nums2.begin(), nums2.end());
 
-		stable_sort(combine.begin(), combine.end());
+		//stable_sort(combine.begin(), combine.end());
 
+		// Method 2: Merge.
+		combine.resize(nums1.size() + nums2.size());
+		merge(nums1.begin(), nums1.end(), nums2.begin(), nums2.end(), combine.begin());
 
 		int sizeSum = combine.size();
 		if (sizeSum % 2 == 0)
@@ -33,34 +36,6 @@ public:
 		}
 
 		return ANS;
-
-		//vector<int>::iterator nums1Itr;
-		//vector<int>::iterator nums2Itr;
-
-		//nums1Itr = nums1.begin();
-		//nums2Itr = nums2.begin();
-		//while (true)
-		//{
-		//	if (nums1Itr < nums1.end() && nums2Itr < nums2.end())
-		//	{
-
-		//	}
-		//	else
-		//	{
-		//		if (nums1Itr == nums1.end() && nums2Itr < nums2.end())
-		//		{
-		//			// Just copy nums2 remained.
-		//		}
-		//		if (nums1Itr < nums1.end() && nums2Itr == nums2.end())
-		//		{
-		//			// Just copy nums1 remained.
-		//		}
-		//		if (nums1Itr == nums1.end() && nums2Itr == nums2.end())
-		//		{
-		//			break;
-		//		}
-		//	}
-		//}
 	}
 };
 
