@@ -12,25 +12,26 @@ public:
 		vector<int>::iterator itr1;
 		vector<int>::iterator itr2;
 
-		int distance;
-		int max = 0;
-		for (itr1 = height.begin(); itr1 < height.end() - 1; itr1++)
+		int ANS = 0;
+		for (itr1 = height.begin(), itr2 = height.end() - 1; itr1 < itr2;)
 		{
-			distance = 1;
-			for (itr2 = itr1 + 1; itr2 < height.end(); itr2++, distance++)
+			int tempArea = (itr2 - itr1) * ((*itr1 > * itr2) ? *itr2 : *itr1);
+			if (tempArea > ANS)
 			{
-				int smaller = 0;
-				smaller = (*itr1 > *itr2) ? *itr2 : *itr1;
-				int tempArea = distance * smaller;
+				ANS = tempArea;
+			}
 
-				if (tempArea > max)
-				{
-					max = tempArea;
-				}
+			if (*itr1 > * itr2)
+			{
+				itr2--;
+			}
+			else
+			{
+				itr1++;
 			}
 		}
 
-		return max;
+		return ANS;
 	}
 };
 
