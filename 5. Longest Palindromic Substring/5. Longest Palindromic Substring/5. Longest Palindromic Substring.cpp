@@ -17,6 +17,7 @@ private:
 
 public:
 	string longestPalindrome(string s) {
+		// O(n2) Odd and Even substring checking.
 
 		countOddSubStr(s);
 		countEvenSubStr(s);
@@ -97,6 +98,58 @@ public:
 			}
 		}
 	}
+
+//public:
+//	string longestPalindrome(string s) {
+//		// Sliding window method.
+//
+//		// Initial.
+//		int maxSubStrLength = 1;
+//		int maxSubStrLeftIdx = 0;
+//		int maxSubStrRightIdx = 0;
+//		string maxSubStr;
+//
+//		int windowLeft = 0;
+//		int windowRight = 0;
+//		int windowSize = s.size();
+//		for (; windowSize > 1; windowSize--)
+//		{
+//			for (windowLeft = 0, windowRight = windowSize - 1; windowRight < s.size(); windowLeft++, windowRight++)
+//			{
+//				int leftCheck = windowLeft;
+//				int rightCheck = windowRight;
+//				for (; leftCheck <= rightCheck; leftCheck++, rightCheck--)
+//				{
+//					if (s.at(leftCheck) == s.at(rightCheck))
+//					{
+//						continue;
+//					}
+//					else
+//					{
+//						break;
+//					}
+//				}
+//
+//				if (leftCheck > rightCheck)
+//				{
+//					if (windowSize > maxSubStrLength)
+//					{
+//						maxSubStrLength = windowSize;
+//						maxSubStrLeftIdx = windowLeft;
+//						maxSubStrRightIdx = windowRight;
+//
+//						maxSubStr = s.substr(maxSubStrLeftIdx, maxSubStrLength);
+//
+//						return maxSubStr;
+//					}
+//				}
+//			}
+//		}
+//
+//		maxSubStr = s.substr(maxSubStrLeftIdx, maxSubStrLength);
+//
+//		return maxSubStr;
+//	}
 };
 
 string stringToString(string input) {
