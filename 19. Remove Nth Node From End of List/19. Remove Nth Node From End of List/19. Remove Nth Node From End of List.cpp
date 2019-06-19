@@ -14,50 +14,88 @@ struct ListNode {
 	ListNode(int x) : val(x), next(NULL) {}
 };
  
+// Two pass solution.
+//class Solution {
+//public:
+//	ListNode* removeNthFromEnd(ListNode* head, int n) {
+//		int allCounter = 0;
+//
+//		ListNode* iter = head;
+//		for (; iter != NULL;)
+//		{
+//			allCounter++;
+//			iter = iter->next;
+//		}
+//
+//		int deletePosition = allCounter - n + 1;
+//		if (deletePosition == 1)
+//		{
+//			// Delete the head node.
+//			ListNode* newHead = head->next;
+//			delete head;
+//
+//			return newHead;
+//		}
+//		else
+//		{
+//			ListNode* iterBefore = head;
+//			iter = head->next;
+//			for (int i = 2;;)
+//			{
+//				if (i == deletePosition)
+//				{
+//					break;
+//				}
+//				else
+//				{
+//					iterBefore = iterBefore->next;
+//					iter = iter->next;
+//					i++;
+//				}
+//			}
+//
+//			iterBefore->next = iter->next;
+//			delete iter;
+//
+//			return head;
+//		}
+//	}
+//};
+
+// One pass solution.
 class Solution {
 public:
 	ListNode* removeNthFromEnd(ListNode* head, int n) {
-		int allCounter = 0;
+		ListNode* virtualHead = new ListNode(0);
+		virtualHead->next = head;
 
-		ListNode* iter = head;
-		for (; iter != NULL;)
+		ListNode* iter1 = virtualHead;
+		ListNode* iter2 = virtualHead;
+
+		for (int i = 1; i <= n; i++)
 		{
-			allCounter++;
-			iter = iter->next;
+			iter2 = iter2->next;
 		}
 
-		int deletePosition = allCounter - n + 1;
-		if (deletePosition == 1)
+		for (;;)
 		{
-			// Delete the head node.
-			ListNode* newHead = head->next;
-			delete head;
-
-			return newHead;
-		}
-		else
-		{
-			ListNode* iterBefore = head;
-			iter = head->next;
-			for (int i = 2;;)
+			if (iter2->next == NULL)
 			{
-				if (i == deletePosition)
-				{
-					break;
-				}
-				else
-				{
-					iterBefore = iterBefore->next;
-					iter = iter->next;
-					i++;
-				}
+				break;
 			}
-
-			iterBefore->next = iter->next;
-			delete iter;
-
-			return head;
+			else
+			{
+				iter1 = iter1->next;
+				iter2 = iter2->next;
+			}
 		}
+
+		ListNode* deleteNode = iter1->next;
+
+		iter1->next = deleteNode->next;
+		delete deleteNode;
+
+		return virtualHead->next;
 	}
 };
 
