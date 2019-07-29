@@ -19,36 +19,36 @@ That is, you can just paste the code on the platform and see the result :)
  */
 class Solution {
 public:
-    ListNode* mergeKLists(vector<ListNode*>& lists) {
-        ListNode* finalList = new ListNode(0);
-        
-        vector<int> merged;
-        
-        vector<ListNode*>::iterator itr;
-        for(itr = lists.begin();itr<lists.end();itr++)
-        {
-            ListNode* head;
-            head = *itr;
-            
-            ListNode* listItr = head;
-            for(;listItr!=NULL;)
-            {
-                merged.push_back(listItr->val);
-                listItr = listItr->next;
-            }
-        }
-        
-        stable_sort(merged.begin(), merged.end());
-        
-        ListNode* finalListGenerator = finalList;
-        vector<int>::iterator mergedItr;
-        for(mergedItr = merged.begin(); mergedItr<merged.end();mergedItr++)
-        {
-            finalListGenerator->next = new ListNode(*mergedItr);
-            
-            finalListGenerator = finalListGenerator->next;
-        }
-        
-        return finalList->next;
-    }
+	ListNode* mergeKLists(vector<ListNode*>& lists) {
+		ListNode* finalList = new ListNode(0);
+
+		vector<int> merged;
+
+		vector<ListNode*>::iterator itr;
+		for (itr = lists.begin(); itr < lists.end(); itr++)
+		{
+			ListNode* head;
+			head = *itr;
+
+			ListNode* listItr = head;
+			for (; listItr != NULL;)
+			{
+				merged.push_back(listItr->val);
+				listItr = listItr->next;
+			}
+		}
+
+		stable_sort(merged.begin(), merged.end());
+
+		ListNode* finalListGenerator = finalList;
+		vector<int>::iterator mergedItr;
+		for (mergedItr = merged.begin(); mergedItr < merged.end(); mergedItr++)
+		{
+			finalListGenerator->next = new ListNode(*mergedItr);
+
+			finalListGenerator = finalListGenerator->next;
+		}
+
+		return finalList->next;
+	}
 };
