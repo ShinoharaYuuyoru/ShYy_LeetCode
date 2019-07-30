@@ -1,3 +1,59 @@
+class Solution {
+public:
+	vector<vector<int>> threeSum(vector<int>& nums) {
+		vector<vector<int>> result;
+
+		sort(nums.begin(), nums.end());
+		// nums.erase(unique(nums.begin(), nums.end()), nums.end());        // This method will cause TLE too.
+		// The solution is skipping the number already scanned manually.
+
+		vector<int>::iterator itr1;
+		for (itr1 = nums.begin(); itr1 != nums.end(); itr1++)
+		{
+			int target = 0 - *itr1;
+			vector<int>::iterator itr2 = itr1 + 1;
+			vector<int>::iterator itr3 = nums.end() - 1;
+
+			while (itr2 < itr3)
+			{
+				int twoSum = *itr2 + *itr3;
+
+				if (twoSum < target)
+				{
+					itr2++;
+				}
+				else if (twoSum > target)
+				{
+					itr3--;
+				}
+				else
+				{
+					vector<int> triplet{ *itr1, *itr2, *itr3 };
+					result.push_back(triplet);
+
+					// Skipping itr2 and itr2.
+					while (itr2 < itr3 && *itr2 == triplet[1])
+					{
+						itr2++;
+					}
+					while (itr2 < itr3 && *itr3 == triplet[2])
+					{
+						itr3--;
+					}
+				}
+			}
+
+			// Skipping itr1.
+			while ((itr1 + 1) < nums.end() && *(itr1 + 1) == *itr1)
+			{
+				itr1++;
+			}
+		}
+
+		return result;
+	}
+};
+
 /*
 O(n3). TLE.
 */
