@@ -4,6 +4,11 @@
 class Solution {
 public:
 	int trap(vector<int>& height) {
+		if (height.size() == 0)
+		{
+			return 0;
+		}
+
 		int trappedWater = 0;
 
 		for (int itr1 = 0; itr1 < height.size(); itr1++)
