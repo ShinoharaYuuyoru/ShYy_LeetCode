@@ -1,3 +1,5 @@
+// 1. Swapping.
+// 8ms 97.71%, 7MB 100.00%.
 class Solution {
 public:
     int findKthLargest(vector<int>& nums, int k) {
@@ -68,5 +70,29 @@ private:
         nums[right] = temp;
 
         return;
+    }
+};
+
+
+// 2. Priority queue
+// 12ms 78.44%, 7MB 100.00%.
+class Solution {
+public:
+    int findKthLargest(vector<int>& nums, int k) {
+        priority_queue<int, vector<int>, greater<int> > Q;
+
+        for (int i = 0; i < nums.size(); i++) {
+            if (Q.size() < k) {
+                Q.push(nums[i]);
+            }
+            else {       // Q.size() == k
+                if (Q.top() < nums[i]) {
+                    Q.pop();
+                    Q.push(nums[i]);
+                }
+            }
+        }
+
+        return Q.top();
     }
 };
