@@ -30,7 +30,7 @@ private:
         }
 
         // Incorrect point
-        if (board[i][j] != word[index]) {w
+        if (board[i][j] != word[index]) {
             return false;
         }
 
