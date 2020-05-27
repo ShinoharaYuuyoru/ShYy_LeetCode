@@ -52,3 +52,54 @@ public:
 		return finalList->next;
 	}
 };
+
+
+// O(kn), 792ms 6.12%, 12.6MB 5.95%.
+class Solution {
+public:
+    ListNode* mergeKLists(vector<ListNode*>& lists) {
+        ListNode* merged = nullptr;
+        ListNode* mergedPtr = nullptr;
+
+        vector<ListNode*> ptrLists = lists;
+
+        while (true) {
+            bool endFlag = true;
+            int minVal = INT_MAX;
+            int minPos = 0;
+            for (int i = 0; i < ptrLists.size(); i++) {
+                if (ptrLists[i] == nullptr) {
+                    endFlag = endFlag & true;
+                }
+                else {
+                    endFlag = false;
+
+                    if (ptrLists[i]->val < minVal) {
+                        minVal = ptrLists[i]->val;
+                        minPos = i;
+                    }
+                }
+            }
+
+            // End
+            if (endFlag == true) {
+                break;
+            }
+            else {
+                ListNode* newNode = new ListNode(minVal);
+                if (merged == nullptr) {
+                    merged = newNode;
+                    mergedPtr = merged;
+                }
+                else {
+                    mergedPtr->next = newNode;
+                    mergedPtr = mergedPtr->next;
+                }
+
+                ptrLists[minPos] = ptrLists[minPos]->next;
+            }
+        }
+
+        return merged;
+    }
+};
